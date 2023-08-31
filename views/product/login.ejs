@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <div>
+
+        <% if(msg) { %>
+            <div>
+                <h2><%= msg %></h2>
+            </div>
+        <% } %>
+
+        <div class="top">
+            <h1>Blog-O-App</h1>
+        </div>
+
+        <form action="/user/login/index" method="post">
+            <div>
+                <label for="username">UserName</label>
+                <input type="text" name="username" id="username" placeholder="user_name">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" placeholder="password">
+            </div>
+
+            <button>Login</button>
+            <button><a href="/user/register">Sign-in</a></button>
+        </form>
+    </div>
+    
+    <script src="/backend/logs.js"></script>
+</body>
+</html>

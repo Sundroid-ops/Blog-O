@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog-O</title>
+    <link rel="stylesheet" href="/Styles/home.css">
+</head>
+<body>
+   <% if (msg) { %>
+        <h2> <%= msg %> </h2>
+   <% } %>
+   <form action="/logout" method="post">
+        <button>log-out</button>
+   </form>
+
+   <h3>Hello</h3>
+
+</body>
+</html>
