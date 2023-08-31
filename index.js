@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path")
 const mongoose = require("mongoose")
+const ejsMate = require("ejs-mate")
 const bcrypt = require("bcrypt")
 const session = require("express-session")
 const flash = require("connect-flash")
@@ -15,11 +16,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
     .then(d=>console.log("Mongoose Connection Secured"))
     .catch(err=> console.log("Mongoose Connection Error"));
 
+app.engine("ejs",ejsMate)
 app.use(express.urlencoded({extended : true}));
 app.use(session({secret : "gogogaga"}))
 app.use(flash())
 app.use("/user",login);
 app.use("/BlogO",content);
+app.use(express.static(path.join(__dirname,"Styles")))
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");

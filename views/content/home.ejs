@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog-O</title>
-    <link rel="stylesheet" href="/Styles/home.css">
-</head>
-<body>
-   <% if (msg) { %>
-        <h2> <%= msg %> </h2>
-   <% } %>
-   <form action="/logout" method="post">
-        <button>log-out</button>
-   </form>
+<% layout("layouts/boilerplate") %>
 
-   <h3>Hello</h3>
+<% block('styles') %>
+     <link rel="stylesheet" href="/home.css">
 
-</body>
-</html>
+
+<% if (msg) { %>
+     <h3>
+          <div class="container mt-2 pop-up text-center "> <%= msg %> </div> 
+     </h3>
+<% } %>
+
+<div class="container data">
+     <ul class="blog_data">
+          <% for( let i of user_data) { %>
+               <li> 
+                    <div class="container body">
+                         <div class="info">
+                              <ion-icon name="person-circle-outline"></ion-icon>
+                              <a href="BlogO/profile/<%=user_data.username%>"></a>
+                         </div>
+
+                         <div class="user_blog">
+                              <div class="title">
+                                   <p><%= user_data. %></p>
+                              </div>
+                         </div>
+                    </div>     
+               </li>
+          <% } %>
+     </ul>
+</div>

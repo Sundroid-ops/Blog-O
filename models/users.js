@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const Data = require("./data")
 const bcrypt = require("bcrypt")
 
 mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
@@ -16,7 +17,13 @@ const userschema = new mongoose.Schema({
         type : String,
         min : 4,
         required : true
-    }
+    },
+    data : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Data"
+        }
+    ]
 })
 
 userschema.statics.FindAndValidate= async function(username,password){ //static function which runs for the whole class not just an object
