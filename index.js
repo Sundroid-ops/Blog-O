@@ -22,7 +22,7 @@ app.use(session({secret : "gogogaga"}))
 app.use(flash())
 app.use("/user",login);
 app.use("/BlogO",content);
-app.use(express.static(path.join(__dirname,"Styles")))
+app.use(express.static(path.join(__dirname,"public")));
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");

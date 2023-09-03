@@ -8,14 +8,18 @@ const dataschema = new mongoose.Schema({
     username : {
         type : String
     },
-    data : {
-        title : {
-            type : String
+    data :  [
+        {
+            title : {
+                type : String,
+            }
         },
-        context : {
-            type : String
+        {
+            context : {
+                type : String,
+            }
         }
-    },
+    ],
     likes : {
         type : Number
     },

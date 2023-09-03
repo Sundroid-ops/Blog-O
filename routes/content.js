@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 
 const Data = require("../models/data")
-const Users = require("../models/users")
+const User = require("../models/users")
 
 const require_login = (req,res,next)=>{
     if(!req.session.user_id){
@@ -13,11 +13,13 @@ const require_login = (req,res,next)=>{
 
 router.get("/", require_login ,async(req,res)=>{
     const user_data = await Data.find({});
-    const user_info = await Data.find({});
-    res.render("content/home",{msg : req.flash("Success"),user_data})
+    const logged_id = req.session.user_id;
+    res.render("content/home",{msg : req.flash("Success"),user_data,logged_id});
 })
 
-router.
-
+router.get("/write/:id", require_login ,(req,res)=>{
+    const logged_id = req.session.user_id;
+    res.render("content/write",{logged_id});
+})
 
 module.exports=router;

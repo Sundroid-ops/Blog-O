@@ -1,0 +1,18 @@
+#title,#body,p{
+    border: none;
+    resize: none;
+}
+
+#title{
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+#title:focus , #body:focus{
+    outline: none;
+}
+
+#body,p{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
