@@ -1,15 +1,8 @@
-#title,#body,p{
-    border: none;
-    resize: none;
-}
-
 #title{
     font-size: 2rem;
-    font-weight: 800;
-}
-
-#title:focus , #body:focus{
-    outline: none;
+    font-weight: 700;
+    resize: none;
+    padding: 5px;
 }
 
 #body,p{
