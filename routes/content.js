@@ -1,5 +1,9 @@
 const express = require("express")
 const router = express.Router();
+const multer  = require('multer')
+const {storage} = require("../cloudinary/cloud")
+
+const upload = multer({storage})
 
 const User = require("../models/users");
 const Data = require("../models/data");
@@ -24,25 +28,14 @@ router.get("/upload/:id",(req,res)=>{
     res.render("content/upload",{logged_id});
 })
 
-router.post("/upload/:id/post", async(req,res)=>{
+router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
     const user = await User.findById(req.params.id);
-    const new_data = new Data({
-        data : [
-            {
-                title : req.body.title
-            },
-            {
-                context : req.body.body
-            }
-        ],
-        likes : 0,
-        comments : 0
-    });
-    new_data.owner=user;
+    const new_data = new Data(req.body);
+    new_data.Owner=user;
     user.data.push(new_data);
     await new_data.save();
     await user.save();
-    res.redirect("/")
+    res.redirect("/BlogO")
 })
 
 module.exports=router;

@@ -6,30 +6,30 @@ mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
     .catch(err=> console.log("Data Connection Error"));
 
 const dataschema = new mongoose.Schema({
-    owner : {
+    Owner : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User"
     },
-    data :  [
-        {
-            title : {
-                type : String,
-            }
-        },
-        {
-            context : {
-                type : String,
-            }
-        }
-    ],
+    title : {
+        type : String
+    },
+    context : {
+        type : String
+    },
     likes : {
-        type : Number
+        type : Number,
+        default : 0
     },
     Comments : [
         {
-            type : Number
+            type : Number,
+            default : 0
         }
-    ]
+    ],
+    Date : {
+        type : Date,
+        default : Date.now
+    }
 })
 
 const Data = mongoose.model("Data",dataschema);

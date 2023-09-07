@@ -6,8 +6,7 @@ const ejsMate = require("ejs-mate")
 const bcrypt = require("bcrypt")
 const session = require("express-session")
 const flash = require("connect-flash")
-
-const Users = require("./models/users")
+require('dotenv').config()
 
 const login = require("./routes/login");
 const content = require("./routes/content");
