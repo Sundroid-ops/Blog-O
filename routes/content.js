@@ -32,10 +32,10 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
     const user = await User.findById(req.params.id);
     const new_data = new Data(req.body);
     new_data.Owner=user;
-    user.data.push(new_data);
+    req.files.path && new_data.images.push({url : req.files[0].path , filename : req.files[0].filename})
     await new_data.save();
     await user.save();
-    res.redirect("/BlogO")
+    res.redirect("/BlogO");
 })
 
 module.exports=router;

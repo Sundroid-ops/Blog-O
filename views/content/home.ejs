@@ -17,12 +17,12 @@
                     <div class="container body">
                          <div class="info">
                               <ion-icon name="person-circle-outline"></ion-icon>
-                              <a href="BlogO/profile/<%=user_data.username%>"></a>
+                              <a href="BlogO/profile/<%=i.owner%>"><%=i.owner%></a>
                          </div>
 
                          <div class="user_blog">
                               <div class="title">
-                                   <p><%= user_data.data.title%></p>
+                                   <p><%=i.title%></p>
                               </div>
                          </div>
                     </div>     

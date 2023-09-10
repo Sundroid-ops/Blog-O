@@ -3,11 +3,6 @@ const router = express.Router();
 
 const Users = require("../models/users")
 
-router.post("/logout",(req,res)=>{
-    req.session.user_id = null;
-    res.redirect("/user/login");
-})
-
 router.post("/login/index",async(req,res)=>{
     const check_acc = await Users.FindAndValidate(req.body.username,req.body.password);
     if(check_acc){
@@ -21,7 +16,8 @@ router.post("/login/index",async(req,res)=>{
 
 
 router.post("/register/index",async(req,res)=>{
-    const new_user = new Users({username : req.body.username , password : req.body.password})
+    const new_user = new Users({username : req.body.username})
+    await Users.RegisterAndHash(new_user,req.body.password)
     await new_user.save();
     req.session.user_id = new_user._id;
     req.flash("Success",`Welcome ${req.body.username}`)
@@ -34,6 +30,11 @@ router.get("/login",(req,res)=>{
 
 router.get("/register",(req,res)=>{
     res.render("product/register")
+})
+
+router.post("/logout",(req,res)=>{
+    req.session.user_id = null;
+    res.redirect("/user/login");
 })
 
 module.exports=router;

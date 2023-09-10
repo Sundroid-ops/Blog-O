@@ -18,26 +18,19 @@ const userschema = new mongoose.Schema({
         min : 4,
         required : true
     },
-    data : [
-        {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : "Data"
-        }
-    ]
 })
 
 userschema.statics.FindAndValidate= async function(username,password){ //static function which runs for the whole class not just an object
     const found_user = await this.findOne({username})
-    if(found_user && bcrypt.compareSync(password , found_user.password)){
+    if(found_user && await bcrypt.compare(password, found_user.password)){
         return found_user;
     }
     return false;
 }
 
-userschema.pre("save", async function(next){ // runs before mongo saves the data
-    this.password = await bcrypt.hash(this.password,10)
-    next();
-})
+userschema.statics.RegisterAndHash = async function(new_user,password){ // runs before mongo saves the data
+    new_user.password = await bcrypt.hash(password,10);
+}
 
 const Users = mongoose.model("Users",userschema);
 module.exports = Users;

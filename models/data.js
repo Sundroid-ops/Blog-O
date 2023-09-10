@@ -16,16 +16,16 @@ const dataschema = new mongoose.Schema({
     context : {
         type : String
     },
+    images : [
+        {
+            url : String,
+            filename : String
+        }
+    ],
     likes : {
         type : Number,
         default : 0
     },
-    Comments : [
-        {
-            type : Number,
-            default : 0
-        }
-    ],
     Date : {
         type : Date,
         default : Date.now
