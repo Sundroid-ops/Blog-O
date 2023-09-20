@@ -11,10 +11,6 @@ require('dotenv').config()
 const login = require("./routes/login");
 const content = require("./routes/content");
 
-mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
-    .then(d=>console.log("Mongoose Connection Secured"))
-    .catch(err=> console.log("Mongoose Connection Error"));
-
 app.engine("ejs",ejsMate)
 app.use(express.urlencoded({extended : true}));
 app.use(session({secret : "gogogaga"}))

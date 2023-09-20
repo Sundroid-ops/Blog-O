@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./users")
+const Users = require("./users")
 
 mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
     .then(d=>console.log("Data Connection Secured"))
@@ -8,24 +8,24 @@ mongoose.connect('mongodb://127.0.0.1:27017/BlogOApp')
 const dataschema = new mongoose.Schema({
     Owner : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        ref : "Users"
     },
+
     title : {
         type : String
     },
+
     context : {
         type : String
     },
+
     images : [
         {
             url : String,
             filename : String
         }
     ],
-    likes : {
-        type : Number,
-        default : 0
-    },
+
     Date : {
         type : Date,
         default : Date.now

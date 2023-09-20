@@ -6,15 +6,15 @@
 <div class="container-fluid mt-5">
     <form action="/BlogO/upload/<%=logged_id%>/post" enctype="multipart/form-data" method="post">
         <div class="container-fluid Article_head">
-            <textarea name="title" id="title" cols="66" rows="2" placeholder="Article Title..." maxlength="115"></textarea>
+            <textarea name="title" id="title" cols="62" rows="2" placeholder="Article Title..." maxlength="115"></textarea>
         </div>
 
-        <div class="img upload">
+        <div class="img_upload container-fluid mt-5">
             <input type="file" name="cover" id="cover">
         </div>
 
-        <div class="container-fluid Article_body">
-            <textarea name="context" id="body" cols="112" rows="15" placeholder="Article Body..."></textarea>
+        <div class="container-fluid Article_body mt-5 mb-3">
+            <textarea name="context" id="body" cols="105" rows="15" placeholder="Article Body..."></textarea>
         </div>
 
         <button>Submit</button>
