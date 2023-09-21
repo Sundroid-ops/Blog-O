@@ -3,6 +3,11 @@
     font-weight: 700;
     resize: none;
     padding: 5px;
+    border-radius: 10px;
+}
+
+.img_upload{
+    margin-bottom: 5px;
 }
 
 #body,p{
@@ -10,8 +15,6 @@
     font-weight: 600;
 }
 
-#example{
-    background-color : blue;
-    height : 300px;
-    width : 300px;
+div .tox-tinymce{
+    margin-left: 12px;
 }

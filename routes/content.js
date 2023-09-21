@@ -36,7 +36,7 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
     req.files.path && new_data.images.push({url : req.files[0].path , filename : req.files[0].filename})
     await new_data.save();
     await user.save();
-    res.redirect("/BlogO");
+    res.redirect("/BlogO/post");
 })
 
 router.get("/post/:id", async(req,res)=>{

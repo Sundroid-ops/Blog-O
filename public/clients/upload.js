@@ -1,4 +1,5 @@
-const FroalaEditor = require("froala-editor")
-
-const editor = new FroalaEditor('#example');
-
+tinymce.init({
+    selector: 'textarea#default',
+    width : 1200,
+    height : 600,
+});
