@@ -18,7 +18,7 @@ const require_login = (req,res,next)=>{
 
 router.use(require_login);
 
-router.get("/",async(req,res)=>{
+router.get("/post",async(req,res)=>{
     const user_data = await Data.find({}).populate("Owner");
     const logged_id = req.session.user_id;
     res.render("content/home",{msg : req.flash("Success"),user_data,logged_id});
@@ -37,6 +37,12 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
     await new_data.save();
     await user.save();
     res.redirect("/BlogO");
+})
+
+router.get("/post/:id", async(req,res)=>{
+    const get_post = await Data.findById(req.params.id).populate("Owner");
+    const logged_id = req.session.user_id;
+    res.render("content/viewpost",{get_post,logged_id})
 })
 
 module.exports=router;

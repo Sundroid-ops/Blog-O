@@ -2,6 +2,7 @@
 
 <% block('styles') %>
     <link rel="stylesheet" href="/Styles/upload.css">
+    <link href="node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 
 <div class="container-fluid mt-5">
     <form action="/BlogO/upload/<%=logged_id%>/post" enctype="multipart/form-data" method="post">
@@ -13,12 +14,11 @@
             <input type="file" name="cover" id="cover">
         </div>
 
-        <div class="container-fluid Article_body mt-5 mb-3">
-            <textarea name="context" id="body" cols="105" rows="15" placeholder="Article Body..."></textarea>
-        </div>
+        <div id="example"></div>
 
         <button>Submit</button>
     </form>
 </div>
 
-<script src="/client/upload.js"></script>
+<script src="/clients/upload.js"></script>
+<script type="text/javascript" src="node_modules/froala-editor/js/froala_editor.pkgd.min.js"></script>

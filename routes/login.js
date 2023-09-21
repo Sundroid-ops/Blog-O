@@ -8,7 +8,7 @@ router.post("/login/index",async(req,res)=>{
     if(check_acc){
         req.session.user_id = check_acc._id;
         req.flash("Success",`Welcome ${req.body.username}`)
-        return res.redirect("/BlogO")
+        return res.redirect("/BlogO/post")
     }
     req.flash("error","Username or Password is wrong!!")
     res.redirect("/user/login")
@@ -21,7 +21,7 @@ router.post("/register/index",async(req,res)=>{
     await new_user.save();
     req.session.user_id = new_user._id;
     req.flash("Success",`Welcome ${req.body.username}`)
-    res.redirect("/BlogO")
+    res.redirect("/BlogO/post")
 })
 
 router.get("/login",(req,res)=>{

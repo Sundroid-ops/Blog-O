@@ -9,3 +9,9 @@
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+#example{
+    background-color : blue;
+    height : 300px;
+    width : 300px;
+}
