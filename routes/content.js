@@ -16,6 +16,8 @@ const require_login = (req,res,next)=>{
     next();
 }
 
+let get_content = "empty"
+
 router.use(require_login);
 
 router.get("/post",async(req,res)=>{
@@ -41,8 +43,14 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
 
 router.get("/post/:id", async(req,res)=>{
     const get_post = await Data.findById(req.params.id).populate("Owner");
+    get_content = get_post.context
     const logged_id = req.session.user_id;
     res.render("content/viewpost",{get_post,logged_id})
 })
 
-module.exports=router;
+console.log(get_content);
+
+module.exports = {
+    router,
+    get_content
+}

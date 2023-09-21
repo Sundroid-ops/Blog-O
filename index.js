@@ -9,14 +9,14 @@ const flash = require("connect-flash")
 require('dotenv').config()
 
 const login = require("./routes/login");
-const content = require("./routes/content");
+const {router} = require("./routes/content");
 
 app.engine("ejs",ejsMate)
 app.use(express.urlencoded({extended : true}));
 app.use(session({secret : "gogogaga"}))
 app.use(flash())
 app.use("/user",login);
-app.use("/BlogO",content);
+app.use("/BlogO",router);
 app.use(express.static(path.join(__dirname,"public")));
 
 app.set("views",path.join(__dirname,"views"));
