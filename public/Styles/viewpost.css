@@ -1,0 +1,16 @@
+
+
+img{
+    width : 780px;
+    margin-left: 150px;
+}
+
+.mini-info{
+    margin-left: 480px;
+    font-size: 1.5rem;
+}
+
+.mini-info a{
+    text-decoration: none;
+    color: grey;
+}

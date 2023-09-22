@@ -1,19 +1,27 @@
 <% layout("layouts/boilerplate") %>
 
 <% block('styles') %>
-    <link rel="stylesheet" href="/Styles/">
+    <link rel="stylesheet" href="/Styles/viewpost.css">
 
 
 <div class="container tot-body">
-    <div>
-        <img src="" class="cover_img">
 
-        <div class="title">
+    <img src="https://e5s6t7j5.rocketcdn.me/wp-content/uploads/2020/11/Cycode-You-Should-Care-About-Securing-Your-Source-Code.png" class="cover_img">
+
+    <div class="TAC">
+        <h1 class="title container mt-2">
             <%= get_post.title %>
+        </h1>
+
+        <div class="mini-info">
+            <a href=""><%= get_post.Owner.username %></a>
+             • <%= day_iso %>
         </div>
     </div>
+
+    <hr>
     
-    <div class="content">
+    <div class="content container mt-2">
         <%- get_post.context %>
     </div>
 
