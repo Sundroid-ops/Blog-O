@@ -48,4 +48,8 @@ router.get("/post/:id", async(req,res)=>{
     res.render("content/viewpost",{get_post,logged_id,day_iso})
 })
 
+router.get("/view/:id", async(req,res)=>{
+    
+})
+
 module.exports = router
