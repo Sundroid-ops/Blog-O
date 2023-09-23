@@ -48,8 +48,11 @@ router.get("/post/:id", async(req,res)=>{
     res.render("content/viewpost",{get_post,logged_id,day_iso})
 })
 
-router.get("/view/:id", async(req,res)=>{
-    
+router.get("/profile/:id", async(req,res)=>{
+    const get_user_post = await Data.find({Owner : req.params.id}).populate("Owner")
+    const username = get_user_post[0].Owner.username
+    const logged_id = req.session.user_id;
+    res.render("content/viewprofile",{get_user_post,username,logged_id})
 })
 
 module.exports = router
