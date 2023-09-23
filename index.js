@@ -1,5 +1,7 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
+app.use(methodOverride("_method"))
 const path = require("path")
 const mongoose = require("mongoose")
 const ejsMate = require("ejs-mate")

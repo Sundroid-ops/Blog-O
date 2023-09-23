@@ -41,8 +41,8 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
 
 router.get("/post/:id", async(req,res)=>{
     const get_post = await Data.findById(req.params.id).populate("Owner");
-    get_content = get_post.context
     const logged_id = req.session.user_id;
+    get_content = get_post.context
     let day_iso = dayjs(get_post.Date);
     day_iso = day_iso.format("MMM DD, YYYY")
     res.render("content/viewpost",{get_post,logged_id,day_iso})
@@ -50,9 +50,27 @@ router.get("/post/:id", async(req,res)=>{
 
 router.get("/profile/:id", async(req,res)=>{
     const get_user_post = await Data.find({Owner : req.params.id}).populate("Owner")
-    const username = get_user_post[0].Owner.username
     const logged_id = req.session.user_id;
+    const username = get_user_post[0].Owner.username
     res.render("content/viewprofile",{get_user_post,username,logged_id})
+})
+
+router.get("/post/:id/edit" , async(req,res)=>{
+    const get_post = await Data.findById(req.params.id);
+    const logged_id = req.session.user_id;
+    if(!get_post.Owner.equals(logged_id)){
+        res.redirect("/BlogO/post")
+    }
+    res.render("content/editpost",{get_post,logged_id})
+})
+
+router.put("/post/:id/update" , async(req,res)=>{
+    const get_post = await Data.findById(req.params.id)
+    if(!get_post.Owner.equals(req.session.user_id)){
+        return res.send("You are not authorized to update data")
+    }
+    await Data.findByIdAndUpdate(req.params.id,{title : req.body.title , context : req.body.context});
+    res.redirect(`/BlogO/post/${req.params.id}`)
 })
 
 module.exports = router
