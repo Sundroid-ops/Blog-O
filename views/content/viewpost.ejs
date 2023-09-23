@@ -13,15 +13,22 @@
             <%= get_post.title %>
         </h1>
 
-        <div class="mini-info">
+        <div class="mini-info mb-3">
             <a href="/BlogO/profile/<%= logged_id %>"><%= get_post.Owner.username %></a>
              • <%= day_iso %>
+             <% if(allow) { %>
+                <button><a href="/BlogO/post/<%= get_post._id %>/edit">Edit</a></button>
+
+                <form action="/BlogO/post/<%= get_post._id %>/delete?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+             <% } %>
         </div>
     </div>
 
     <hr>
     
-    <div class="content container mt-2">
+    <div class="content container">
         <%- get_post.context %>
     </div>
 
