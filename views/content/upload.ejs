@@ -3,21 +3,21 @@
 <% block('styles') %>
     <link rel="stylesheet" href="/Styles/upload.css">
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
     <form action="/BlogO/upload/<%=logged_id%>/post" enctype="multipart/form-data" method="post">
 
-        <div class="img_upload container-fluid mt-5">
-            <input type="file" name="cover" id="cover">
+        <div class="cover-box">
+            <div class="img_upload container-fluid mt-5">
+                <input type="file" name="cover" id="cover">
+                <label for="customFileInput" class="input-label">Choose Cover</label>
+            </div>
+            <button type="submit" class="sub">Post</button>
         </div>
-
         <div class="container-fluid Article_head">
-            <textarea name="title" id="title" cols="65" rows="2" placeholder="Article Title..." maxlength="115"></textarea>
+            <textarea name="title" id="title" cols="65" rows="2" placeholder="Article Title..." maxlength="115" required></textarea>
         </div>
 
-        <textarea name="context" id="default"></textarea>
-
-        <button>Post</button>
-
+        <textarea name="context" type="text" id="default"></textarea>
     </form>
 </div>
 

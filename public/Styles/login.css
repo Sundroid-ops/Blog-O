@@ -22,12 +22,16 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvdmVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60");
+    background-size: cover;
+    background-repeat: none;
 }
 
 .box-log{
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
+    background-color : floralwhite;
 }
 
 .top{
@@ -76,3 +80,4 @@ input {
     border-radius: 10px;
     background-color: blueviolet;
 }
+
