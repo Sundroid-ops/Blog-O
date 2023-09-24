@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BlogO</title>
+    <link rel="stylesheet" href="/Styles/login.css">
 </head>
 <body>
-    <div>
+    <div class="box-log">
 
         <% if(msg) { %>
             <div>
@@ -15,22 +16,27 @@
         <% } %>
 
         <div class="top">
-            <h1>Blog-O-App</h1>
+            <h1>Blog<span class="highlight">O</span></h1>
         </div>
 
         <form action="/user/login/index" method="post">
-            <div>
-                <label for="username">UserName</label>
+            <div class="uname">
                 <input type="text" name="username" id="username" placeholder="user_name">
             </div>
 
-            <div>
-                <label for="password">Password</label>
+            <div class="pswd">
                 <input type="text" name="password" id="password" placeholder="password">
             </div>
 
-            <button>Login</button>
-            <button><a href="/user/register">Sign-in</a></button>
+            <div class="btns">
+                <button class="login">Login</button>
+            </div>
+
+            <div class="sign-box">
+                <hr>
+                <p>or</p>
+                <a href="/user/register">Sign-up</a>
+            </div>
         </form>
     </div>
 </body>
