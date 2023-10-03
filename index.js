@@ -15,7 +15,7 @@ const event = require("./routes/content");
 
 app.engine("ejs",ejsMate)
 app.use(express.urlencoded({extended : true}));
-app.use(session({secret : "gogogaga"}))
+app.use(session({secret : process.env.SESSION_SECRET}))
 app.use(flash())
 app.use("/user",login);
 app.use("/BlogO",event);
