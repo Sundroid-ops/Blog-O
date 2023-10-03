@@ -33,7 +33,10 @@ router.post("/upload/:id/post", upload.array("cover"), async(req,res)=>{
     const user = await Users.findById(req.params.id);
     const new_data = new Data(req.body);
     new_data.Owner=user;
-    req.files.path && new_data.images.push({url : req.files[0].path , filename : req.files[0].filename})
+    req.files[0] && new_data.images.push({url : req.files[0].path , filename : req.files[0].filename})
+    if(!req.files[0]){
+        new_data.images.push({url : "https://res.cloudinary.com/dpi07kxqs/image/upload/v1695577206/Blog-O/o8qo2suc7uoqqcob1zka.png" , filename : "Stock Image"})
+    }
     await new_data.save();
     await user.save();
     res.redirect("/BlogO/post");
@@ -48,7 +51,8 @@ router.get("/post/:id", async(req,res)=>{
     if(get_post.Owner._id.equals(logged_id)){
         allow = true
     }
-    res.render("content/viewpost",{get_post,logged_id,day_iso,allow})
+    const post_img = get_post.images[0].url;
+    res.render("content/viewpost",{get_post,logged_id,day_iso,allow,post_img})
 })
 
 router.get("/profile/:id", async(req,res)=>{
